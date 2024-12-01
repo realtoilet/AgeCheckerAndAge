@@ -170,20 +170,42 @@ namespace AgeCheckerAndAge {
 		DateTime birthday = dateTime->Value;
 
 		int age = today.Year - birthday.Year;
-		String^ genderStr = (comboBox->SelectedItem->ToString() == "Male") ?
-			(pictureBox->Image = Image::FromFile("C:\\Users\\Adrian\\Downloads\\gigachad.png"), "WOAH WHATTA YOU ARE A SIGMA BRO") :
-			(comboBox->SelectedItem->ToString() == "Female") ?
-			(pictureBox->Image = Image::FromFile("C:\\Users\\Adrian\\Downloads\\maid.png"), "GET BACK TO THE KITCHEN WAMEN") :
-			(comboBox->SelectedItem->ToString() == "Non-Binary") ?
-			(pictureBox->Image = Image::FromFile("C:\\Users\\Adrian\\Downloads\\kap.png"), "WHY ARE YOU GAY MAN") :
-			(pictureBox->Image = Image::FromFile("C:\\Users\\Adrian\\Downloads\\ah.png"), "NO GENDER WTF U IS AN AIRPLANE?");
 
-		String^ ageType = (age <= 10) ? "KID"
-			: (age <= 17) ? "TEEN"
-			: (age <= 60) ? "ADULT"
-			: "SENIOR CITIZEN";
+		String^ genderStr;
+
+		if (comboBox->SelectedItem == nullptr) {
+			MessageBox::Show("NO GENDER");
+		}
+		else if (comboBox->SelectedItem->ToString() == "Male") {
+			pictureBox->Image = Image::FromFile("C:\\Users\\Adrian\\Downloads\\gigachad.png");
+			genderStr = "YOU ARE A MALE";
+		}
+		else if (comboBox->SelectedItem->ToString() == "Female") {
+			pictureBox->Image = Image::FromFile("C:\\Users\\Adrian\\Downloads\\maid.png");
+			genderStr = "YOU ARE A FEMALE";
+		}
+		else if (comboBox->SelectedItem->ToString() == "Non-Binary") {
+			pictureBox->Image = Image::FromFile("C:\\Users\\Adrian\\Downloads\\kap.png");
+			genderStr = "YOU ARE NON BINARY";
+		}
+
+
+		String^ ageType;
+		if (age <= 10) {
+			ageType = "KID";
+		}
+		else if (age <= 17) {
+			ageType = "TEEN";
+		}
+		else if (age <= 60) {
+			ageType = "ADULT";
+		}
+		else {
+			ageType = "SENIOR CITIZEN";
+		}
 
 		lb_display->Text = "YOUR AGE IS :" + age + "\n" + genderStr + "\nYOU ARE A " + ageType;
+
 	}
 };
 }
