@@ -171,6 +171,9 @@ namespace AgeCheckerAndAge {
 
 		int age = today.Year - birthday.Year;
 
+		if ((today.Month < birthday.Month) || (today.Month == birthday.Month && today.Day < birthday.Day)) {
+			age--;
+		}
 		String^ genderStr;
 
 		if (comboBox->SelectedItem == nullptr) {
@@ -187,6 +190,9 @@ namespace AgeCheckerAndAge {
 		else if (comboBox->SelectedItem->ToString() == "Non-Binary") {
 			pictureBox->Image = Image::FromFile("C:\\Users\\Adrian\\Downloads\\kap.png");
 			genderStr = "YOU ARE NON BINARY";
+		}
+		else {
+			pictureBox->Image = nullptr;
 		}
 
 
