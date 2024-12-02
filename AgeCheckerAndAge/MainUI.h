@@ -79,7 +79,7 @@ namespace AgeCheckerAndAge {
 			// 
 			this->dateTime->Location = System::Drawing::Point(90, 22);
 			this->dateTime->Name = L"dateTime";
-			this->dateTime->Size = System::Drawing::Size(200, 22);
+			this->dateTime->Size = System::Drawing::Size(235, 22);
 			this->dateTime->TabIndex = 0;
 			// 
 			// label1
@@ -197,7 +197,10 @@ namespace AgeCheckerAndAge {
 
 
 		String^ ageType;
-		if (age <= 10) {
+		if (age < 0) {
+			ageType = "SPERM";
+		}
+		else if (age <= 10) {
 			ageType = "KID";
 		}
 		else if (age <= 17) {
